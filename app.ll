@@ -11,88 +11,75 @@ define dso_local i32 @waveToColor(i32 noundef %0) #0 {
   %5 = alloca i32, align 4
   %6 = alloca i32, align 4
   store i32 %0, ptr %2, align 4
-  store i32 8, ptr %3, align 4
-  store i32 35, ptr %4, align 4
-  store i32 75, ptr %5, align 4
   %7 = load i32, ptr %2, align 4
   store i32 %7, ptr %6, align 4
   %8 = load i32, ptr %6, align 4
-  %9 = icmp sgt i32 %8, 2048
+  %9 = icmp sgt i32 %8, 1000
   br i1 %9, label %10, label %11
 
 10:                                               ; preds = %1
-  store i32 2048, ptr %6, align 4
+  store i32 1000, ptr %6, align 4
   br label %11
 
 11:                                               ; preds = %10, %1
   %12 = load i32, ptr %6, align 4
-  %13 = icmp slt i32 %12, -2048
+  %13 = icmp slt i32 %12, -1000
   br i1 %13, label %14, label %15
 
 14:                                               ; preds = %11
-  store i32 -2048, ptr %6, align 4
+  store i32 -1000, ptr %6, align 4
   br label %15
 
 15:                                               ; preds = %14, %11
   %16 = load i32, ptr %6, align 4
   %17 = icmp sge i32 %16, 0
-  br i1 %17, label %18, label %34
+  br i1 %17, label %18, label %31
 
 18:                                               ; preds = %15
   %19 = load i32, ptr %6, align 4
-  %20 = mul nsw i32 %19, 70
-  %21 = sdiv i32 %20, 2048
-  %22 = load i32, ptr %3, align 4
-  %23 = add nsw i32 %22, %21
-  store i32 %23, ptr %3, align 4
-  %24 = load i32, ptr %6, align 4
-  %25 = mul nsw i32 %24, 180
-  %26 = sdiv i32 %25, 2048
-  %27 = load i32, ptr %4, align 4
-  %28 = add nsw i32 %27, %26
-  store i32 %28, ptr %4, align 4
-  %29 = load i32, ptr %6, align 4
-  %30 = mul nsw i32 %29, 180
-  %31 = sdiv i32 %30, 2048
-  %32 = load i32, ptr %5, align 4
-  %33 = add nsw i32 %32, %31
-  store i32 %33, ptr %5, align 4
-  br label %52
+  %20 = mul nsw i32 %19, 245
+  %21 = sdiv i32 %20, 1000
+  %22 = add nsw i32 10, %21
+  store i32 %22, ptr %3, align 4
+  %23 = load i32, ptr %6, align 4
+  %24 = mul nsw i32 %23, 235
+  %25 = sdiv i32 %24, 1000
+  %26 = add nsw i32 20, %25
+  store i32 %26, ptr %4, align 4
+  %27 = load i32, ptr %6, align 4
+  %28 = mul nsw i32 %27, 215
+  %29 = sdiv i32 %28, 1000
+  %30 = add nsw i32 40, %29
+  store i32 %30, ptr %5, align 4
+  br label %42
 
-34:                                               ; preds = %15
-  %35 = load i32, ptr %6, align 4
-  %36 = sub nsw i32 0, %35
-  store i32 %36, ptr %6, align 4
-  %37 = load i32, ptr %6, align 4
-  %38 = mul nsw i32 %37, 6
-  %39 = sdiv i32 %38, 2048
-  %40 = load i32, ptr %3, align 4
-  %41 = sub nsw i32 %40, %39
-  store i32 %41, ptr %3, align 4
-  %42 = load i32, ptr %6, align 4
-  %43 = mul nsw i32 %42, 25
-  %44 = sdiv i32 %43, 2048
-  %45 = load i32, ptr %4, align 4
-  %46 = sub nsw i32 %45, %44
-  store i32 %46, ptr %4, align 4
-  %47 = load i32, ptr %6, align 4
-  %48 = mul nsw i32 %47, 45
-  %49 = sdiv i32 %48, 2048
-  %50 = load i32, ptr %5, align 4
-  %51 = sub nsw i32 %50, %49
-  store i32 %51, ptr %5, align 4
-  br label %52
+31:                                               ; preds = %15
+  %32 = load i32, ptr %6, align 4
+  %33 = sub nsw i32 0, %32
+  store i32 %33, ptr %6, align 4
+  store i32 5, ptr %3, align 4
+  %34 = load i32, ptr %6, align 4
+  %35 = mul nsw i32 %34, 30
+  %36 = sdiv i32 %35, 1000
+  %37 = add nsw i32 10, %36
+  store i32 %37, ptr %4, align 4
+  %38 = load i32, ptr %6, align 4
+  %39 = mul nsw i32 %38, 100
+  %40 = sdiv i32 %39, 1000
+  %41 = add nsw i32 25, %40
+  store i32 %41, ptr %5, align 4
+  br label %42
 
-52:                                               ; preds = %34, %18
-  %53 = load i32, ptr %3, align 4
-  %54 = shl i32 %53, 16
-  %55 = or i32 -16777216, %54
-  %56 = load i32, ptr %4, align 4
-  %57 = shl i32 %56, 8
-  %58 = or i32 %55, %57
-  %59 = load i32, ptr %5, align 4
-  %60 = or i32 %58, %59
-  ret i32 %60
+42:                                               ; preds = %31, %18
+  %43 = load i32, ptr %3, align 4
+  %44 = shl i32 %43, 16
+  %45 = or i32 -16777216, %44
+  %46 = load i32, ptr %4, align 4
+  %47 = shl i32 %46, 8
+  %48 = or i32 %45, %47
+  %49 = load i32, ptr %5, align 4
+  %50 = or i32 %48, %49
+  ret i32 %50
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
@@ -139,6 +126,63 @@ define dso_local void @drawCell(i32 noundef %0, i32 noundef %1, i32 noundef %2) 
 declare void @simPutPixel(i32 noundef, i32 noundef, i32 noundef) #1
 
 ; Function Attrs: noinline nounwind optnone uwtable
+define dso_local void @drawField(ptr noundef %0) #0 {
+  %2 = alloca ptr, align 8
+  %3 = alloca i32, align 4
+  %4 = alloca i32, align 4
+  store ptr %0, ptr %2, align 8
+  store i32 0, ptr %4, align 4
+  br label %5
+
+5:                                                ; preds = %28, %1
+  %6 = load i32, ptr %4, align 4
+  %7 = icmp slt i32 %6, 192
+  br i1 %7, label %8, label %31
+
+8:                                                ; preds = %5
+  store i32 0, ptr %3, align 4
+  br label %9
+
+9:                                                ; preds = %24, %8
+  %10 = load i32, ptr %3, align 4
+  %11 = icmp slt i32 %10, 384
+  br i1 %11, label %12, label %27
+
+12:                                               ; preds = %9
+  %13 = load i32, ptr %3, align 4
+  %14 = load i32, ptr %4, align 4
+  %15 = load ptr, ptr %2, align 8
+  %16 = load i32, ptr %4, align 4
+  %17 = mul nsw i32 %16, 384
+  %18 = load i32, ptr %3, align 4
+  %19 = add nsw i32 %17, %18
+  %20 = sext i32 %19 to i64
+  %21 = getelementptr inbounds i32, ptr %15, i64 %20
+  %22 = load i32, ptr %21, align 4
+  %23 = call i32 @waveToColor(i32 noundef %22)
+  call void @drawCell(i32 noundef %13, i32 noundef %14, i32 noundef %23)
+  br label %24
+
+24:                                               ; preds = %12
+  %25 = load i32, ptr %3, align 4
+  %26 = add nsw i32 %25, 1
+  store i32 %26, ptr %3, align 4
+  br label %9, !llvm.loop !6
+
+27:                                               ; preds = %9
+  br label %28
+
+28:                                               ; preds = %27
+  %29 = load i32, ptr %4, align 4
+  %30 = add nsw i32 %29, 1
+  store i32 %30, ptr %4, align 4
+  br label %5, !llvm.loop !8
+
+31:                                               ; preds = %5
+  ret void
+}
+
+; Function Attrs: noinline nounwind optnone uwtable
 define dso_local void @clearField(ptr noundef %0) #0 {
   %2 = alloca ptr, align 8
   %3 = alloca i32, align 4
@@ -163,15 +207,16 @@ define dso_local void @clearField(ptr noundef %0) #0 {
   %13 = load i32, ptr %3, align 4
   %14 = add nsw i32 %13, 1
   store i32 %14, ptr %3, align 4
-  br label %4, !llvm.loop !6
+  br label %4, !llvm.loop !9
 
 15:                                               ; preds = %4
   ret void
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @addDrop(ptr noundef %0, i32 noundef %1, i32 noundef %2, i32 noundef %3) #0 {
-  %5 = alloca ptr, align 8
+define dso_local void @addSource(ptr noundef %0, i32 noundef %1, i32 noundef %2) #0 {
+  %4 = alloca ptr, align 8
+  %5 = alloca i32, align 4
   %6 = alloca i32, align 4
   %7 = alloca i32, align 4
   %8 = alloca i32, align 4
@@ -180,118 +225,144 @@ define dso_local void @addDrop(ptr noundef %0, i32 noundef %1, i32 noundef %2, i
   %11 = alloca i32, align 4
   %12 = alloca i32, align 4
   %13 = alloca i32, align 4
-  %14 = alloca i32, align 4
-  %15 = alloca i32, align 4
-  store ptr %0, ptr %5, align 8
-  store i32 %1, ptr %6, align 4
-  store i32 %2, ptr %7, align 4
-  store i32 %3, ptr %8, align 4
-  store i32 36, ptr %14, align 4
-  store i32 -6, ptr %10, align 4
-  br label %16
+  store ptr %0, ptr %4, align 8
+  store i32 %1, ptr %5, align 4
+  store i32 %2, ptr %6, align 4
+  store i32 36, ptr %12, align 4
+  store i32 -6, ptr %8, align 4
+  br label %14
 
-16:                                               ; preds = %77, %4
-  %17 = load i32, ptr %10, align 4
-  %18 = icmp sle i32 %17, 6
-  br i1 %18, label %19, label %80
+14:                                               ; preds = %74, %3
+  %15 = load i32, ptr %8, align 4
+  %16 = icmp sle i32 %15, 6
+  br i1 %16, label %17, label %77
 
-19:                                               ; preds = %16
-  store i32 -6, ptr %9, align 4
-  br label %20
+17:                                               ; preds = %14
+  store i32 -6, ptr %7, align 4
+  br label %18
 
-20:                                               ; preds = %73, %19
-  %21 = load i32, ptr %9, align 4
-  %22 = icmp sle i32 %21, 6
-  br i1 %22, label %23, label %76
+18:                                               ; preds = %70, %17
+  %19 = load i32, ptr %7, align 4
+  %20 = icmp sle i32 %19, 6
+  br i1 %20, label %21, label %73
 
-23:                                               ; preds = %20
-  %24 = load i32, ptr %9, align 4
-  %25 = load i32, ptr %9, align 4
-  %26 = mul nsw i32 %24, %25
-  %27 = load i32, ptr %10, align 4
-  %28 = load i32, ptr %10, align 4
-  %29 = mul nsw i32 %27, %28
-  %30 = add nsw i32 %26, %29
-  store i32 %30, ptr %13, align 4
-  %31 = load i32, ptr %13, align 4
-  %32 = load i32, ptr %14, align 4
-  %33 = icmp sle i32 %31, %32
-  br i1 %33, label %34, label %72
+21:                                               ; preds = %18
+  %22 = load i32, ptr %7, align 4
+  %23 = load i32, ptr %7, align 4
+  %24 = mul nsw i32 %22, %23
+  %25 = load i32, ptr %8, align 4
+  %26 = load i32, ptr %8, align 4
+  %27 = mul nsw i32 %25, %26
+  %28 = add nsw i32 %24, %27
+  store i32 %28, ptr %11, align 4
+  %29 = load i32, ptr %11, align 4
+  %30 = load i32, ptr %12, align 4
+  %31 = icmp sle i32 %29, %30
+  br i1 %31, label %32, label %69
 
-34:                                               ; preds = %23
-  %35 = load i32, ptr %6, align 4
-  %36 = load i32, ptr %9, align 4
-  %37 = add nsw i32 %35, %36
-  store i32 %37, ptr %11, align 4
-  %38 = load i32, ptr %7, align 4
-  %39 = load i32, ptr %10, align 4
-  %40 = add nsw i32 %38, %39
-  store i32 %40, ptr %12, align 4
-  %41 = load i32, ptr %11, align 4
-  %42 = icmp sgt i32 %41, 0
-  br i1 %42, label %43, label %71
+32:                                               ; preds = %21
+  %33 = load i32, ptr %5, align 4
+  %34 = load i32, ptr %7, align 4
+  %35 = add nsw i32 %33, %34
+  store i32 %35, ptr %9, align 4
+  %36 = load i32, ptr %6, align 4
+  %37 = load i32, ptr %8, align 4
+  %38 = add nsw i32 %36, %37
+  store i32 %38, ptr %10, align 4
+  %39 = load i32, ptr %9, align 4
+  %40 = icmp sgt i32 %39, 0
+  br i1 %40, label %41, label %68
 
-43:                                               ; preds = %34
-  %44 = load i32, ptr %11, align 4
-  %45 = icmp slt i32 %44, 383
-  br i1 %45, label %46, label %71
+41:                                               ; preds = %32
+  %42 = load i32, ptr %9, align 4
+  %43 = icmp slt i32 %42, 383
+  br i1 %43, label %44, label %68
 
-46:                                               ; preds = %43
-  %47 = load i32, ptr %12, align 4
-  %48 = icmp sgt i32 %47, 0
-  br i1 %48, label %49, label %71
+44:                                               ; preds = %41
+  %45 = load i32, ptr %10, align 4
+  %46 = icmp sgt i32 %45, 0
+  br i1 %46, label %47, label %68
 
-49:                                               ; preds = %46
-  %50 = load i32, ptr %12, align 4
-  %51 = icmp slt i32 %50, 191
-  br i1 %51, label %52, label %71
+47:                                               ; preds = %44
+  %48 = load i32, ptr %10, align 4
+  %49 = icmp slt i32 %48, 191
+  br i1 %49, label %50, label %68
 
-52:                                               ; preds = %49
-  %53 = load i32, ptr %8, align 4
-  %54 = load i32, ptr %14, align 4
-  %55 = load i32, ptr %13, align 4
-  %56 = sub nsw i32 %54, %55
-  %57 = mul nsw i32 %53, %56
-  %58 = load i32, ptr %14, align 4
-  %59 = add nsw i32 %58, 1
-  %60 = sdiv i32 %57, %59
-  store i32 %60, ptr %15, align 4
-  %61 = load i32, ptr %15, align 4
-  %62 = load ptr, ptr %5, align 8
-  %63 = load i32, ptr %12, align 4
-  %64 = mul nsw i32 %63, 384
-  %65 = load i32, ptr %11, align 4
-  %66 = add nsw i32 %64, %65
-  %67 = sext i32 %66 to i64
-  %68 = getelementptr inbounds i32, ptr %62, i64 %67
-  %69 = load i32, ptr %68, align 4
-  %70 = add nsw i32 %69, %61
-  store i32 %70, ptr %68, align 4
-  br label %71
+50:                                               ; preds = %47
+  %51 = load i32, ptr %12, align 4
+  %52 = load i32, ptr %11, align 4
+  %53 = sub nsw i32 %51, %52
+  %54 = mul nsw i32 1800, %53
+  %55 = load i32, ptr %12, align 4
+  %56 = add nsw i32 %55, 1
+  %57 = sdiv i32 %54, %56
+  store i32 %57, ptr %13, align 4
+  %58 = load i32, ptr %13, align 4
+  %59 = load ptr, ptr %4, align 8
+  %60 = load i32, ptr %10, align 4
+  %61 = mul nsw i32 %60, 384
+  %62 = load i32, ptr %9, align 4
+  %63 = add nsw i32 %61, %62
+  %64 = sext i32 %63 to i64
+  %65 = getelementptr inbounds i32, ptr %59, i64 %64
+  %66 = load i32, ptr %65, align 4
+  %67 = add nsw i32 %66, %58
+  store i32 %67, ptr %65, align 4
+  br label %68
 
-71:                                               ; preds = %52, %49, %46, %43, %34
-  br label %72
+68:                                               ; preds = %50, %47, %44, %41, %32
+  br label %69
 
-72:                                               ; preds = %71, %23
-  br label %73
+69:                                               ; preds = %68, %21
+  br label %70
 
-73:                                               ; preds = %72
-  %74 = load i32, ptr %9, align 4
-  %75 = add nsw i32 %74, 1
-  store i32 %75, ptr %9, align 4
-  br label %20, !llvm.loop !8
+70:                                               ; preds = %69
+  %71 = load i32, ptr %7, align 4
+  %72 = add nsw i32 %71, 1
+  store i32 %72, ptr %7, align 4
+  br label %18, !llvm.loop !10
 
-76:                                               ; preds = %20
-  br label %77
+73:                                               ; preds = %18
+  br label %74
 
-77:                                               ; preds = %76
-  %78 = load i32, ptr %10, align 4
-  %79 = add nsw i32 %78, 1
-  store i32 %79, ptr %10, align 4
-  br label %16, !llvm.loop !9
+74:                                               ; preds = %73
+  %75 = load i32, ptr %8, align 4
+  %76 = add nsw i32 %75, 1
+  store i32 %76, ptr %8, align 4
+  br label %14, !llvm.loop !11
 
-80:                                               ; preds = %16
+77:                                               ; preds = %14
   ret void
+}
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @randomX() #0 {
+  %1 = alloca i32, align 4
+  store i32 8, ptr %1, align 4
+  %2 = load i32, ptr %1, align 4
+  %3 = call i32 (...) @simRand()
+  %4 = load i32, ptr %1, align 4
+  %5 = mul nsw i32 2, %4
+  %6 = sub nsw i32 384, %5
+  %7 = srem i32 %3, %6
+  %8 = add nsw i32 %2, %7
+  ret i32 %8
+}
+
+declare i32 @simRand(...) #1
+
+; Function Attrs: noinline nounwind optnone uwtable
+define dso_local i32 @randomY() #0 {
+  %1 = alloca i32, align 4
+  store i32 8, ptr %1, align 4
+  %2 = load i32, ptr %1, align 4
+  %3 = call i32 (...) @simRand()
+  %4 = load i32, ptr %1, align 4
+  %5 = mul nsw i32 2, %4
+  %6 = sub nsw i32 192, %5
+  %7 = srem i32 %3, %6
+  %8 = add nsw i32 %2, %7
+  ret i32 %8
 }
 
 ; Function Attrs: noinline nounwind optnone uwtable
@@ -332,7 +403,7 @@ define dso_local void @stepWave(ptr noundef %0, ptr noundef %1, ptr noundef %2) 
   %25 = load i32, ptr %7, align 4
   %26 = add nsw i32 %25, 1
   store i32 %26, ptr %7, align 4
-  br label %11, !llvm.loop !10
+  br label %11, !llvm.loop !12
 
 27:                                               ; preds = %11
   store i32 0, ptr %8, align 4
@@ -364,7 +435,7 @@ define dso_local void @stepWave(ptr noundef %0, ptr noundef %1, ptr noundef %2) 
   %45 = load i32, ptr %8, align 4
   %46 = add nsw i32 %45, 1
   store i32 %46, ptr %8, align 4
-  br label %28, !llvm.loop !11
+  br label %28, !llvm.loop !13
 
 47:                                               ; preds = %28
   store i32 1, ptr %8, align 4
@@ -441,7 +512,7 @@ define dso_local void @stepWave(ptr noundef %0, ptr noundef %1, ptr noundef %2) 
   %103 = load i32, ptr %7, align 4
   %104 = add nsw i32 %103, 1
   store i32 %104, ptr %7, align 4
-  br label %52, !llvm.loop !12
+  br label %52, !llvm.loop !14
 
 105:                                              ; preds = %52
   br label %106
@@ -450,66 +521,9 @@ define dso_local void @stepWave(ptr noundef %0, ptr noundef %1, ptr noundef %2) 
   %107 = load i32, ptr %8, align 4
   %108 = add nsw i32 %107, 1
   store i32 %108, ptr %8, align 4
-  br label %48, !llvm.loop !13
+  br label %48, !llvm.loop !15
 
 109:                                              ; preds = %48
-  ret void
-}
-
-; Function Attrs: noinline nounwind optnone uwtable
-define dso_local void @drawField(ptr noundef %0) #0 {
-  %2 = alloca ptr, align 8
-  %3 = alloca i32, align 4
-  %4 = alloca i32, align 4
-  store ptr %0, ptr %2, align 8
-  store i32 0, ptr %4, align 4
-  br label %5
-
-5:                                                ; preds = %28, %1
-  %6 = load i32, ptr %4, align 4
-  %7 = icmp slt i32 %6, 192
-  br i1 %7, label %8, label %31
-
-8:                                                ; preds = %5
-  store i32 0, ptr %3, align 4
-  br label %9
-
-9:                                                ; preds = %24, %8
-  %10 = load i32, ptr %3, align 4
-  %11 = icmp slt i32 %10, 384
-  br i1 %11, label %12, label %27
-
-12:                                               ; preds = %9
-  %13 = load i32, ptr %3, align 4
-  %14 = load i32, ptr %4, align 4
-  %15 = load ptr, ptr %2, align 8
-  %16 = load i32, ptr %4, align 4
-  %17 = mul nsw i32 %16, 384
-  %18 = load i32, ptr %3, align 4
-  %19 = add nsw i32 %17, %18
-  %20 = sext i32 %19 to i64
-  %21 = getelementptr inbounds i32, ptr %15, i64 %20
-  %22 = load i32, ptr %21, align 4
-  %23 = call i32 @waveToColor(i32 noundef %22)
-  call void @drawCell(i32 noundef %13, i32 noundef %14, i32 noundef %23)
-  br label %24
-
-24:                                               ; preds = %12
-  %25 = load i32, ptr %3, align 4
-  %26 = add nsw i32 %25, 1
-  store i32 %26, ptr %3, align 4
-  br label %9, !llvm.loop !14
-
-27:                                               ; preds = %9
-  br label %28
-
-28:                                               ; preds = %27
-  %29 = load i32, ptr %4, align 4
-  %30 = add nsw i32 %29, 1
-  store i32 %30, ptr %4, align 4
-  br label %5, !llvm.loop !15
-
-31:                                               ; preds = %5
   ret void
 }
 
@@ -522,41 +536,65 @@ define dso_local void @app() #0 {
   %5 = alloca ptr, align 8
   %6 = alloca ptr, align 8
   %7 = alloca ptr, align 8
-  %8 = getelementptr inbounds [73728 x i32], ptr %1, i64 0, i64 0
-  store ptr %8, ptr %4, align 8
-  %9 = getelementptr inbounds [73728 x i32], ptr %2, i64 0, i64 0
-  store ptr %9, ptr %5, align 8
-  %10 = getelementptr inbounds [73728 x i32], ptr %3, i64 0, i64 0
-  store ptr %10, ptr %6, align 8
-  %11 = load ptr, ptr %4, align 8
-  call void @clearField(ptr noundef %11)
-  %12 = load ptr, ptr %5, align 8
-  call void @clearField(ptr noundef %12)
-  %13 = load ptr, ptr %6, align 8
-  call void @clearField(ptr noundef %13)
+  %8 = alloca i32, align 4
+  %9 = alloca i32, align 4
+  %10 = alloca i32, align 4
+  %11 = getelementptr inbounds [73728 x i32], ptr %1, i64 0, i64 0
+  store ptr %11, ptr %4, align 8
+  %12 = getelementptr inbounds [73728 x i32], ptr %2, i64 0, i64 0
+  store ptr %12, ptr %5, align 8
+  %13 = getelementptr inbounds [73728 x i32], ptr %3, i64 0, i64 0
+  store ptr %13, ptr %6, align 8
+  store i32 0, ptr %8, align 4
   %14 = load ptr, ptr %4, align 8
-  call void @addDrop(ptr noundef %14, i32 noundef 192, i32 noundef 96, i32 noundef 1800)
+  call void @clearField(ptr noundef %14)
   %15 = load ptr, ptr %5, align 8
-  call void @addDrop(ptr noundef %15, i32 noundef 192, i32 noundef 96, i32 noundef 1800)
-  br label %16
+  call void @clearField(ptr noundef %15)
+  %16 = load ptr, ptr %6, align 8
+  call void @clearField(ptr noundef %16)
+  br label %17
 
-16:                                               ; preds = %0, %16
-  %17 = load ptr, ptr %5, align 8
-  call void @drawField(ptr noundef %17)
+17:                                               ; preds = %0, %30
+  %18 = load i32, ptr %8, align 4
+  %19 = srem i32 %18, 70
+  %20 = icmp eq i32 %19, 0
+  br i1 %20, label %21, label %30
+
+21:                                               ; preds = %17
+  %22 = call i32 @randomX()
+  store i32 %22, ptr %9, align 4
+  %23 = call i32 @randomY()
+  store i32 %23, ptr %10, align 4
+  %24 = load ptr, ptr %4, align 8
+  %25 = load i32, ptr %9, align 4
+  %26 = load i32, ptr %10, align 4
+  call void @addSource(ptr noundef %24, i32 noundef %25, i32 noundef %26)
+  %27 = load ptr, ptr %5, align 8
+  %28 = load i32, ptr %9, align 4
+  %29 = load i32, ptr %10, align 4
+  call void @addSource(ptr noundef %27, i32 noundef %28, i32 noundef %29)
+  br label %30
+
+30:                                               ; preds = %21, %17
+  %31 = load ptr, ptr %5, align 8
+  call void @drawField(ptr noundef %31)
   call void (...) @simFlush()
-  %18 = load ptr, ptr %4, align 8
-  %19 = load ptr, ptr %5, align 8
-  %20 = load ptr, ptr %6, align 8
-  call void @stepWave(ptr noundef %18, ptr noundef %19, ptr noundef %20)
-  %21 = load ptr, ptr %4, align 8
-  store ptr %21, ptr %7, align 8
-  %22 = load ptr, ptr %5, align 8
-  store ptr %22, ptr %4, align 8
-  %23 = load ptr, ptr %6, align 8
-  store ptr %23, ptr %5, align 8
-  %24 = load ptr, ptr %7, align 8
-  store ptr %24, ptr %6, align 8
-  br label %16
+  %32 = load ptr, ptr %4, align 8
+  %33 = load ptr, ptr %5, align 8
+  %34 = load ptr, ptr %6, align 8
+  call void @stepWave(ptr noundef %32, ptr noundef %33, ptr noundef %34)
+  %35 = load ptr, ptr %4, align 8
+  store ptr %35, ptr %7, align 8
+  %36 = load ptr, ptr %5, align 8
+  store ptr %36, ptr %4, align 8
+  %37 = load ptr, ptr %6, align 8
+  store ptr %37, ptr %5, align 8
+  %38 = load ptr, ptr %7, align 8
+  store ptr %38, ptr %6, align 8
+  %39 = load i32, ptr %8, align 4
+  %40 = add nsw i32 %39, 1
+  store i32 %40, ptr %8, align 4
+  br label %17
 }
 
 declare void @simFlush(...) #1
