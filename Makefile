@@ -35,13 +35,13 @@ LLVM_FLAGS = $(shell llvm-config --cppflags --ldflags --libs)
 ir_gen: sim.c IRGen/app_ir_gen.cpp
 	clang++ $(LLVM_FLAGS) $^ -lSDL2 -o $@
 
-asm2ir: sim.c IRGen/app_asm_IRgen_1.cpp
-	clang++ $(LLVM_FLAGS) $^ -lSDL2 -o $@
+asm2ir asm2fullir:
+	$(MAKE) -C ASM2IR all
 
-asm2fullir: sim.c IRGen/app_asm_IRgen_2.cpp
-	clang++ $(LLVM_FLAGS) $^ -lSDL2 -o $@
+check-asm2ir:
+	$(MAKE) -C ASM2IR check
 
 clean:
 	rm app app-opt app2 app2-opt app3 *.ll full.bc ir_gen asm2ir asm2fullir
 
-.PHONY: all clean
+.PHONY: all clean asm2ir asm2fullir check-asm2ir

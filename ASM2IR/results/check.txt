@@ -1,0 +1,7 @@
+ISA arithmetic, memory, aliasing and branches: OK
+Parser diagnostics and runtime faults: OK
+C == ext == full (seed=1): frames=1 pixels=294912 hash=fe226bfbf7db5539
+C == ext == full (seed=7): frames=3 pixels=884736 hash=05d40411072c5019
+C == ext == full (seed=42): frames=72 pixels=21233664 hash=17a18572de7b3819
+C == ext == full (seed=1): frames=150 pixels=44236800 hash=a4de04addbff4f09
+All checks passed.

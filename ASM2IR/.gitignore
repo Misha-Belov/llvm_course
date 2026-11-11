@@ -1,0 +1,4 @@
+/build*/
+/results/*.bin
+/__pycache__/
+/tests/__pycache__/
